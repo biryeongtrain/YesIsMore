@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "yes_is_more",
+  "version": "${version}",
+  "name": "YesIsMore",
+  "description": "Bring Destiny 2 to minecraft with community coperate",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/yes_is_more/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "net.biryeongtrain.yes_is_more.YesIsMore"
+    ]
+  },
+  "mixins": [
+    "yes_is_more.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
