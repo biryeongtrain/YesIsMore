@@ -23,7 +23,7 @@ public class ToolMaterialManager {
         return INSTANCE;
     }
 
-    public ToolMaterial getToolMaterial(ToolMaterialInfo info) {
+    public ToolMaterialInfo getToolMaterial(ToolMaterial info) {
         return MAP.getOrDefault(info, null);
     }
 }
