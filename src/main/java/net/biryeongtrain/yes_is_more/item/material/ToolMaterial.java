@@ -8,11 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public abstract class ToolMaterial {
+public abstract class ToolMaterialInfo {
     private final Item baseItem;
     private final Identifier materialId;
 
-    public ToolMaterial(Identifier id, Item baseItem) {
+    public ToolMaterialInfo(Identifier id, Item baseItem) {
         this.baseItem = baseItem;
         this.materialId = id;
     }
