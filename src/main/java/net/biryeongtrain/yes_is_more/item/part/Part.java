@@ -1,7 +1,7 @@
 package net.biryeongtrain.yes_is_more.item.part;
 
 import eu.pb4.polymer.core.api.item.PolymerItem;
-import net.biryeongtrain.yes_is_more.item.material.ToolMaterial;
+import net.biryeongtrain.yes_is_more.item.material.ToolMaterialInfo;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
@@ -14,10 +14,10 @@ import xyz.nucleoid.packettweaker.PacketContext;
 
 public abstract class Part extends Item implements PolymerItem {
 
-    private final ToolMaterial material;
+    private final ToolMaterialInfo material;
     private final Identifier part;
 
-    public Part(Identifier part, ToolMaterial material) {
+    public Part(Identifier part, ToolMaterialInfo material) {
         super(new Settings().maxCount(4));
         this.material = material;
         this.part = part;

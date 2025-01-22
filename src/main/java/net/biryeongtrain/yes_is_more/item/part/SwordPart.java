@@ -1,6 +1,6 @@
 package net.biryeongtrain.yes_is_more.item.part;
 
-import net.biryeongtrain.yes_is_more.item.material.ToolMaterial;
+import net.biryeongtrain.yes_is_more.item.material.ToolMaterialInfo;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -14,7 +14,7 @@ public class SwordPart extends Part {
     public static final Identifier SWORD_PART_ID = id("sword_part");
     public final Identifier modelId;
 
-    public SwordPart(Identifier modelId, ToolMaterial toolMaterial) {
+    public SwordPart(Identifier modelId, ToolMaterialInfo toolMaterial) {
         super(SWORD_PART_ID, toolMaterial);
         this.modelId = modelId;
     }

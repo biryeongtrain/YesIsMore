@@ -1,24 +1,30 @@
 package net.biryeongtrain.yes_is_more.item.material;
 
+import com.mojang.serialization.Codec;
+import net.biryeongtrain.yes_is_more.ToolMaterialManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public abstract class ToolMaterialInfo {
-    private final Item baseItem;
+    public static final Codec<ToolMaterialInfo> CODEC;
+    private final ToolMaterial material;
     private final Identifier materialId;
 
-    public ToolMaterialInfo(Identifier id, Item baseItem) {
-        this.baseItem = baseItem;
+    private final float durabilityModifier;
+    private final float breakingSpeedModifier;
+
+    public ToolMaterialInfo(Identifier id, ToolMaterial material) {
+        this.material = material;
         this.materialId = id;
     }
 
-    public Item getBaseItem() {
-        return baseItem;
+    public ToolMaterial getMaterial() {
+        return material;
     }
 
     public Identifier getMaterialId() {
@@ -34,4 +40,5 @@ public abstract class ToolMaterialInfo {
 
     public void onEntityKill(ItemStack stack, ServerPlayerEntity killer, Entity entity, DamageSource source) {
     }
+
 }
