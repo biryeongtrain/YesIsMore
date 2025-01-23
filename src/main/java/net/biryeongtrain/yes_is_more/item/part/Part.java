@@ -41,4 +41,8 @@ public abstract class Part extends Item implements PolymerItem {
     public void onEntityKill(ItemStack stack, ServerPlayerEntity killer, Entity entity, DamageSource source) {
         this.material.onEntityKill(stack, killer, entity, source);
     }
+
+    public void onTick(ItemStack stack, ServerPlayerEntity player, boolean isInHand) {
+        this.material.onTick(stack, player, isInHand);
+    }
 }
