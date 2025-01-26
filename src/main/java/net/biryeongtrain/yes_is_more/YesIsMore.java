@@ -1,5 +1,6 @@
 package net.biryeongtrain.yes_is_more;
 
+import net.biryeongtrain.yes_is_more.item.components.ItemComponents;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -11,7 +12,7 @@ public class YesIsMore implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Hello Fabric world!");
+        ItemComponents.init();
     }
 
     public static Identifier id(String path) {

@@ -1,6 +1,7 @@
 package net.biryeongtrain.yes_is_more.item.material;
 
 import com.mojang.serialization.Codec;
+import net.biryeongtrain.yes_is_more.ToolMaterialManager;
 import net.biryeongtrain.yes_is_more.util.function.QuadConsumer;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -12,12 +13,15 @@ import net.minecraft.util.Identifier;
 import org.apache.commons.lang3.function.TriConsumer;
 
 public class ToolMaterialInfo {
-    public static final Codec<ToolMaterialInfo> CODEC;
-    private final ToolMaterial material;
-    private final Identifier materialId;
+    public static final Codec<ToolMaterialInfo> CODEC = Codec.lazyInitialized(() -> Identifier.CODEC.xmap(
+            to -> ToolMaterialManager.getInstance().getToolMaterial(to),
+            from -> from.materialId)
+    );
+    public final ToolMaterial material;
+    public final Identifier materialId;
 
-    private final float durabilityModifier;
-    private final float breakingSpeedModifier;
+    public final float durabilityModifier;
+    public final float breakingSpeedModifier;
 
     private final TriConsumer<ItemStack, ServerPlayerEntity, BlockState> onBreakCallback;
     private final QuadConsumer<ItemStack, ServerPlayerEntity, Entity, DamageSource> onEntityHitCallback;
@@ -37,13 +41,6 @@ public class ToolMaterialInfo {
         this.onEntityHitCallback = onEntityHitCallback != null ? onEntityHitCallback : ((itemStack, serverPlayerEntity, entity, attacker) -> {});
         this.onEntityKillCallback = onEntityKillCallback != null ? onEntityKillCallback : ((itemStack, serverPlayerEntity, entity, attacker) -> {});
         this.onTickCallback = onTickCallback != null ? onTickCallback : ((itemStack, serverPlayerEntity, attacker) -> {});
-    }
-    public ToolMaterial getMaterial() {
-        return material;
-    }
-
-    public Identifier getMaterialId() {
-        return materialId;
     }
 
     public void onBreak(ItemStack stack, ServerPlayerEntity player, BlockState block) {

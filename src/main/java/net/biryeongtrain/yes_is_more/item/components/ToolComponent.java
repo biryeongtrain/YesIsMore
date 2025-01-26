@@ -1,38 +1,55 @@
 package net.biryeongtrain.yes_is_more.item.components;
 
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.*;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.biryeongtrain.yes_is_more.item.material.ToolMaterialInfo;
+import net.biryeongtrain.yes_is_more.item.part.Parts;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
+import net.minecraft.registry.entry.RegistryEntry;
 
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
 
 public final class ToolComponent {
     public static Codec<ToolComponent> CODEC = Codec.lazyInitialized(() -> RecordCodecBuilder.create(instance -> instance.group(
-                    Codec.unboundedMap(Identifier.CODEC, ToolMaterialInfo.CODEC).fieldOf("tool_components").forGetter(ToolComponent::parts)
-            ).apply(instance, ToolComponent::new)
+                    Codec.unboundedMap(Parts.CODEC, ToolMaterialInfo.CODEC).fieldOf("tool_components").forGetter(ToolComponent::parts)
+            ).apply(instance, (map) -> new ToolComponent(Maps.newEnumMap(map)))
     ));
-    private final Map<Identifier, ToolMaterialInfo> parts;
+    private final EnumMap<Parts, ToolMaterialInfo> parts;
 
-    public ToolComponent(Map<Identifier, ToolMaterialInfo> parts) {
+    public ToolComponent(EnumMap<Parts, ToolMaterialInfo> parts) {
         this.parts = parts;
     }
 
-    public ItemStack getParts(Identifier partName) {
+    public ItemStack getParts(Parts partName) {
         if (parts.containsKey(partName)) {
-
+              // TODO create part ItemStack Logic
         }
         return ItemStack.EMPTY;
     }
 
-    private Map<Identifier, ToolMaterialInfo> parts() {
+    public Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> getModifiers() {
+        Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> map = HashMultimap.create();
+        this.parts.forEach((part, info) ->{
+            map.putAll  (part.combine(info));
+        });
+        // todo need test
+        return map;
+    }
+
+    public int getMaxDamage() {
+
+    }
+
+    private Map<Parts, ToolMaterialInfo> parts() {
         return parts;
     }
 
-    public Map<Identifier, ToolMaterialInfo> getParts() {
+    public Map<Parts, ToolMaterialInfo> getParts() {
         return ImmutableMap.copyOf(parts);
     }
 
