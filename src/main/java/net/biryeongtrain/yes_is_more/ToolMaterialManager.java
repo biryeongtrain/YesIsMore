@@ -34,4 +34,8 @@ public class ToolMaterialManager {
         return MATERIAL_INFO_MAP.getOrDefault(material, UNKNOWN);
     }
 
+    public void register(ToolMaterialInfo info) {
+        ID_TO_INFO_MAP.put(info.materialId, info);
+        MATERIAL_INFO_MAP.put(info.material, info);
+    }
 }

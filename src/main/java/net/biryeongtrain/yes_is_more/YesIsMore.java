@@ -1,6 +1,7 @@
 package net.biryeongtrain.yes_is_more;
 
 import net.biryeongtrain.yes_is_more.item.components.ItemComponents;
+import net.biryeongtrain.yes_is_more.item.material.ToolMaterials;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ public class YesIsMore implements ModInitializer {
     @Override
     public void onInitialize() {
         ItemComponents.init();
+        ToolMaterials.register();
     }
 
     public static Identifier id(String path) {

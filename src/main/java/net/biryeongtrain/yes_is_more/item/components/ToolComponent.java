@@ -41,10 +41,6 @@ public final class ToolComponent {
         return map;
     }
 
-    public int getMaxDamage() {
-
-    }
-
     private Map<Parts, ToolMaterialInfo> parts() {
         return parts;
     }

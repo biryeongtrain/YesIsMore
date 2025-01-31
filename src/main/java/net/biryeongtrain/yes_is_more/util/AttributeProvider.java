@@ -1,4 +1,4 @@
-package net.biryeongtrain.yes_is_more.item.part;
+package net.biryeongtrain.yes_is_more.util;
 
 import com.google.common.collect.Multimap;
 import net.biryeongtrain.yes_is_more.item.material.ToolMaterialInfo;
