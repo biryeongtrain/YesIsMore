@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -27,7 +27,9 @@ dependencies {
     modImplementation include("eu.pb4:polymer-core:${project.polymer_version}")
     modImplementation include("eu.pb4:polymer-resource-pack:${project.polymer_version}")
     modImplementation include("eu.pb4:polymer-blocks:${project.polymer_version}")
+    modImplementation include("eu.pb4:polymer-autohost:${project.polymer_version}")
     modImplementation include("xyz.nucleoid:stimuli:${project.stimuli_version}")
+    modImplementation include("eu.pb4:sgui:${project.sgui_version}")
 
     testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
 }

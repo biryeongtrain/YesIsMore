@@ -2,6 +2,7 @@ package net.biryeongtrain.yes_is_more.item.module;
 
 import net.biryeongtrain.yes_is_more.YesIsMore;
 import net.biryeongtrain.yes_is_more.item.part.Parts;
+import net.biryeongtrain.yes_is_more.item.part.SwordPart;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.Item;
@@ -45,5 +46,9 @@ public class SwordModuleItem extends ModuleItem {
         ItemStack stack =  super.getPolymerItemStack(itemStack, tooltipType, context);
         stack.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(List.of(), List.of(), List.of(), List.of()));
         return stack;
+    }
+
+    public static SwordModuleItem createSwordModuleItem(SwordPart swordPart) {
+
     }
 }

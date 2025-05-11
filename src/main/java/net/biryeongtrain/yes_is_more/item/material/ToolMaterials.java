@@ -30,5 +30,6 @@ public class ToolMaterials {
         ToolMaterialManager.getInstance().register(IRON);
         ToolMaterialManager.getInstance().register(GOLD);
         ToolMaterialManager.getInstance().register(DIAMOND);
+        ToolMaterialManager.getInstance().register(NETHERITE);
     }
 }

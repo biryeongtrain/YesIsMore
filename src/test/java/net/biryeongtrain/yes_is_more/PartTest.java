@@ -9,5 +9,6 @@ public class PartTest {
     public static void beforeAll() {
         SharedConstants.createGameVersion();
         Bootstrap.initialize();
+        Inventory
     }
 }
